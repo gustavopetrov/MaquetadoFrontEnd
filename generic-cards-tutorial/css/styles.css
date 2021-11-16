@@ -1,0 +1,107 @@
+*, *::before, *::after {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 
+    Que es una caja?
+        Es una caja, generalmente con un background de algun color, con bordes alrededor y padding.
+*/
+body{
+    background-color: burlywood;
+}
+/* 
+    grid-template-columns crea las columnas , gap marca el espaciado entre columnas y el flex-start sirve para que cada columna ocupe lo que ocupa su contenido, caso contrario la columna con menos texto ocuparia lo mismo que la que tiene más texto ( su height )
+*/
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    align-items: flex-start;
+}
+.card {
+    background-color: white;
+    --padding: 1rem;
+    border: 2px solid #777;
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
+/* 
+    box-shadow:
+    Primer valor : EjeX (derecha izquierda)
+    Segundo valor: EjeY (arriba abajo)
+    Tercer valor: Blur (Difuminado)
+    Cuarto valor: Spread ( Esparcir ? )
+    Quinto valor: color del sombreado
+*/
+.card.card-shadow{
+    border:none;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0, .2);
+}
+
+.card-header{
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    padding: var(--padding);
+    padding-bottom: 0;
+    overflow: hidden;
+}
+/* 
+    Selecciono a todos los card-header que tengan un card-image
+*/
+.card-header.card-image{
+    padding: 0;
+    overflow: hidden;
+}
+.card-header.card-image > img {
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    transition: 200ms transform ease-in-out;
+}
+
+.card:hover > .card-header.card-image > img{
+    transform: scale(1.025);
+}
+
+.card-body {
+    font-size: 1.5rem;
+    padding: 0 var(--padding);
+}
+.card-footer{
+    margin-top: 1rem;
+    padding: var(--padding);
+    padding-top: 0;
+}
+
+.card-footer__btn {
+    --color: hsl(200, 50%, 50%);
+    background-color: var(--color);
+    border: none;
+    color: white;
+    font: 1rem;
+    padding: .5em .75em;
+    cursor: pointer;
+}
+/* 
+    usar hsl para efectos de hover, el efecto de brillo mouseover se logra repitiendo el color y aumentando levemente el último valor H= Hue (Matiz) S= Saturation (Saturación) L= Lightness (Luminosidad)
+*/
+.card-footer__btn:hover,card-footer__btn:focus{
+    background-color: hsl(200, 50%, 60%);
+}
+
+.btn-outline{
+ background: none;
+ border: 1px solid var(--color);
+ color: var(--color);
+}
+.btn-outline:hover, .btn-outline:focus {
+    background: hsl(200, 50%, 90%) ;
+}
+
+.card-footer__btn + .card-footer__btn{
+    margin-left: .25rem;
+}
